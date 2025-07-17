@@ -15,8 +15,8 @@ This section explains how to get the application's core backend service up and r
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/focus-guardian.git
-    cd focus-guardian
+    git clone https://github.com/rajathnh/FocusGuardian.git
+    cd FocusGuardian
     ```
 
 2.  **Create and activate a virtual environment:**
