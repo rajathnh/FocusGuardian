@@ -1,0 +1,49 @@
+# --- Python Virtual Environment ---
+# Never commit the venv folder.
+venv/
+venv1/
+focus_env/
+
+# --- Python Caches ---
+# These are automatically generated and not needed in the repo.
+__pycache__/
+*.pyc
+
+# --- IDE / Editor Specific ---
+# VS Code specific settings and caches.
+.vscode/
+
+# --- Large Model and Data Files ---
+# These are too large for a Git repository and can be regenerated.
+# Model Checkpoints and Assets
+distilbert-productivity-classifier/
+emotion_classifier_model.joblib
+focus_guardian.db
+focus_guardian.db-journal # SQLite temporary file
+
+# Datasets - These are often very large. It's better to share them
+# via a cloud service like Google Drive or a dedicated data host.
+# If your CSVs are small (< 25MB), you might choose to commit them,
+# but it's good practice to ignore them.
+*.csv
+
+archive/
+
+# --- Temporary/Generated Folders ---
+# Folders created by our scripts that don't need to be versioned.
+logs/
+evaluation_logs/
+torch_packages/
+unlabeled_data.csv # Intermediate file from the capture script
+
+# --- Miscellaneous ---
+# Any files in the "Not in Use" folder
+
+
+# Specific files if you choose to ignore them individually
+# raw_productivity_data.csv
+# master_productivity_dataset.csv
+# facial_features_dataset.csv
+
+./req.txt
+./requirements1.txt
