@@ -20,7 +20,7 @@ distilbert-productivity-classifier/
 emotion_classifier_model.joblib
 focus_guardian.db
 focus_guardian.db-journal # SQLite temporary file
-
+t5-service-extractor-modern-final/
 # Datasets - These are often very large. It's better to share them
 # via a cloud service like Google Drive or a dedicated data host.
 # If your CSVs are small (< 25MB), you might choose to commit them,
