@@ -8,11 +8,10 @@ Focus Guardian is a sophisticated desktop application designed to provide users 
 
 | Dashboard | Session History | Classification Report |
 | :---: | :---: | :---: |
-| ![Dashboard](images/Dashboard.png) | ![Session History](images/Session%20History.png) | ![Classification Report](images/Classification.png) |
+| ![Dashboard](Images/Dashboard.png) | ![Session History](Images/Session%20History.png) | ![Classification Report](Images/Classification.png) |
 | **System Architecture** | **Session Detail 1** | **Session Detail 2** |
-| ![Architecture](images/Architecture.png) | ![Session History 1](images/Session%20History1.png) | ![Session History 2](images/Session%20History2.png) |
+| ![Architecture](Images/Architecture.png) | ![Session History 1](Images/Session%20History1.png) | ![Session History 2](Images/Session%20History2.png) |
 
-*Note: Replace this with a compelling screenshot of your application's UI*
 
 ## 🏛️ Core Architectural Philosophy
 
