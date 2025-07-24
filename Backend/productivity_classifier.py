@@ -4,8 +4,10 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import os
 
 class ProductivityClassifier:
-    def __init__(self, model_path="./distilbert-productivity-classifier"):
+    def __init__(self, model_name="distilbert-productivity-classifier"):
         print("CLASSIFIER: Loading productivity model...")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(script_dir, model_name)
         if not os.path.isdir(model_path):
             raise FileNotFoundError(f"Model directory not found at {model_path}. Please ensure the fine-tuned model exists.")
         

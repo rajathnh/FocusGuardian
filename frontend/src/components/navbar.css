@@ -1,0 +1,233 @@
+/* Navbar Styles */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --clr-primary: #5B7DB1;
+  --clr-secondary: #7EC8A5;
+  --clr-accent: #FFB677;
+  --clr-dark: #2D4357;
+  --clr-bg: #F9FBFD;
+  --clr-text: #4A5568;
+  --clr-light: #FFFFFF;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, #2C3E50 0%, #1ABC9C 100%);
+  box-shadow: var(--shadow);
+  padding: 0 2rem;
+  z-index: 1000;
+  transition: all var(--transition-fast);
+}
+.navbar.scrolled {
+  background: linear-gradient(90deg, #0b2b5b, #6adaa6);
+  padding: 0.25rem 0;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+/* Logo area */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding-right: 1rem;
+}
+
+/* Circular background */
+.logo-circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  background: var(--clr-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+}
+
+/* Make the <img> fill and crop to the circle */
+.logo-circle .logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     
+  border-radius: 50%;   
+}
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+
+.brand-name {
+  color: var(--clr-light);
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+/* Desktop navigation */
+.desktop-nav {
+  display: none;
+  gap: 3.5rem;
+}
+.nav-link {
+  color: var(--clr-light);
+  font-size: 1.15rem;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color var(--transition-fast);
+}
+.nav-link:hover {
+  color: #14437c;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  height: 2.5px;
+  width: 100%;
+  background-color: #14437c;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: block;
+  width: 36px;
+  height: 30px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: var(--clr-light);
+  left: 0;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+.top { top: 0; }
+.middle { top: 50%; transform: translateY(-50%); }
+.bottom { bottom: 0; }
+
+/* Mobile button open state */
+.mobile-menu-btn.open .top {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.mobile-menu-btn.open .middle {
+  opacity: 0;
+}
+.mobile-menu-btn.open .bottom {
+  transform: rotate(-45deg) translate(13px, -13px);
+}
+
+/* Mobile nav links */
+.mobile-nav {
+  background: rgba(255, 255, 255, 0.1);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.98), rgba(26, 188, 156, 0.98));
+  backdrop-filter: blur(8px);
+}
+.mobile-nav.open {
+  max-height: 340px;
+}
+.mobile-nav-link {
+  color: var(--clr-light);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 2.5rem;
+}
+
+.mobile-login-btn {
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 1rem;
+  border-bottom: none !important;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 2.5rem;
+}
+
+/* Show desktop nav above mobile breakpoint */
+@media (min-width: 768px) {
+  .desktop-nav { display: flex; align-items: center; }
+  .mobile-menu-btn { display: none; }
+}
+
+/* Adjust container spacing */
+.nav-content.container {
+  max-width: 100%;
+  padding: 0 2rem;
+  justify-content: space-between;
+}
+
+/* Login button styles */
+.nav-login-btn {
+  background: rgb(94, 176, 191);
+  color: var(--clr-light) !important;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid #876cc0;
+  border-radius: 3rem;
+  margin-left: 1.1rem;
+  margin-right: 1.2rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.nav-login-btn:hover {
+  background: #4a7ca3;
+  transform: translateY(-1px);
+}
+
+
+
+/* Adjust desktop nav spacing */
+@media (min-width: 768px) {
+  .desktop-nav {
+    gap: 2rem;
+    margin-right: 1.2rem;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+  }
+  
+  .logo-container {
+    margin-left: 1rem;
+  }
+}

@@ -6,11 +6,13 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 import os
 
 class ServiceExtractor:
-    def __init__(self, model_path="./t5-service-extractor-modern-final"):
+    def __init__(self, model_name="t5-service-extractor-modern-final"):
         """
         Initializes the ServiceExtractor by loading the fine-tuned T5 model and tokenizer.
         """
         print("SERVICE EXTRACTOR: Loading fine-tuned T5 model...")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(script_dir, model_name)
         if not os.path.isdir(model_path):
             raise FileNotFoundError(
                 f"Model directory not found at '{model_path}'. "

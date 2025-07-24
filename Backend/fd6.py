@@ -92,10 +92,12 @@ class FocusDetector:
 
         # ## NEW: Load the trained emotion classifier model ##
         try:
-            self.emotion_model = joblib.load("emotion_classifier_model.joblib")
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            model_path = os.path.join(script_dir, "emotion_classifier_model.joblib")
+            self.emotion_model = joblib.load(model_path)
             print("FD: Emotion classifier model loaded successfully.", file=sys.stderr)
         except FileNotFoundError:
-            print("FD Error: 'emotion_classifier_model.joblib' not found. Emotion detection will be disabled.", file=sys.stderr)
+            print(f"FD Error: '{model_path}' not found. Emotion detection will be disabled.", file=sys.stderr)
             self.emotion_model = None
         except Exception as e:
             print(f"FD Error: Failed to load emotion model: {e}", file=sys.stderr)
