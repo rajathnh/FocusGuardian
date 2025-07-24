@@ -104,4 +104,3 @@ This is the command center that the user interacts with.
 
 ---
 
-This project demonstrates a comprehensive understanding of full-stack development, machine learning integration, and sophisticated software architecture, tackling real-world challenges of privacy, performance, and user experience.
