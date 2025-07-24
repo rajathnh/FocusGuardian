@@ -1,10 +1,16 @@
-# Focus Guardian 2.0
+# Focus Guardian
 
 **An Intelligent, Privacy-First Productivity Monitoring & Analytics Platform**
 
 Focus Guardian is a sophisticated desktop application designed to provide users with deep, actionable insights into their productivity habits. Leveraging a hybrid architecture that combines local AI processing with a robust cloud backend, it offers real-time focus analysis without compromising user privacy. The platform tracks application usage, determines user engagement through webcam analysis, and provides a comprehensive suite of analytics to help users understand and improve their workflow.
 
-![Focus Guardian Dashboard](INSERT_YOUR_BEST_SCREENSHOT_HERE_e.g.,_Dashboard_or_Analytics.png)
+### Application Gallery
+
+| Dashboard | Session History | Classification Report |
+| :---: | :---: | :---: |
+| ![Dashboard](images/Dashboard.png) | ![Session History](images/Session%20History.png) | ![Classification Report](images/Classification.png) |
+| **System Architecture** | **Session Detail 1** | **Session Detail 2** |
+| ![Architecture](images/Architecture.png) | ![Session History 1](images/Session%20History1.png) | ![Session History 2](images/Session%20History2.png) |
 
 *Note: Replace this with a compelling screenshot of your application's UI*
 
