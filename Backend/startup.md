@@ -26,9 +26,9 @@ This section explains how to get the application's core backend service up and r
     # source venv/bin/activate  # On Mac/Linux
     ```
 
-3.  **Install all required Python libraries:** This command uses the provided `requirements.txt` file.
+3.  **Install all required Python libraries:** This command uses the provided `req.txt` file.
     ```bash
-    python -m pip install -r requirements.txt
+    python -m pip install -r req.txt
     ```
 
 ### Running the Application
