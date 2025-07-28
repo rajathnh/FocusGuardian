@@ -28,7 +28,7 @@ def analysis_loop(session_id, jwt_token, stop_event):
         # Initialize your local AI/data components
         productivity_classifier = ProductivityClassifier()
         service_extractor = ServiceExtractor()
-        print("PYTHON_ENGINE_READY", flush=True)
+        #print("PYTHON_ENGINE_READY", flush=True)
     except Exception as e:
         print(f"FATAL: Failed to initialize core models: {e}", file=sys.stderr)
         print("PYTHON_ENGINE_FAILED", flush=True)
@@ -45,9 +45,13 @@ def analysis_loop(session_id, jwt_token, stop_event):
     processes = [fd_process, wm_process]
     for p in processes:
         p.start()
+    #print("--- Main script pausing for 25 seconds to allow children to initialize... ---")
+    #time.sleep(25)
+    print("PYTHON_ENGINE_READY", flush=True)
 
     print("--- Background data collectors are running. Starting main analysis loop. ---")
     latest_focus_data = {}
+
     
     while not stop_event.is_set():
         try:

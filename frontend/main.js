@@ -102,11 +102,31 @@ ipcMain.on('start-local-engine', (event, { sessionId, token }) => {
 });
 
 // Listen for the 'stop-local-engine' signal
+// In your main.js file, find this handler and replace it.
+
 ipcMain.on('stop-local-engine', () => {
-  if (pythonProcess) {
-    console.log('[Main Process] Received signal to stop local engine. Terminating...');
-    pythonProcess.kill();
+  // Add a log to confirm this handler is being called
+  console.log('[Main Process] Received signal to stop local engine.');
+
+  if (pythonProcess && !pythonProcess.killed) {
+    console.log('[Main Process] ATTEMPTING TO TERMINATE process...');
+
+    // On Windows, taskkill is the most reliable way to kill a process and its children.
+    // On Mac/Linux, kill with SIGKILL is the equivalent.
+    if (process.platform === 'win32') {
+      // Use the 'taskkill' command to forcefully terminate the process tree.
+      spawn('taskkill', ['/pid', pythonProcess.pid, '/f', '/t']);
+      console.log(`[Main Process] Sent taskkill command for PID: ${pythonProcess.pid}`);
+    } else {
+      // Use SIGKILL for Mac/Linux, which is a non-ignorable signal.
+      pythonProcess.kill('SIGKILL');
+      console.log(`[Main Process] Sent SIGKILL signal to process.`);
+    }
+
+    // We can clear the reference immediately after sending the command.
     pythonProcess = null;
+  } else {
+    console.warn('[Main Process] Stop signal received, but no process was running or it was already killed.');
   }
 });
 

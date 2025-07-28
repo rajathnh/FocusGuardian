@@ -11,7 +11,8 @@ const {
     getUserStats,
     getSessionById,
     getDailyAnalysis,
-    getDailyAppUsage, // Assuming getUserStats remains in sessionController for now
+    getDailyAppUsage,
+    activateSession // Assuming getUserStats remains in sessionController for now
 } = require("../controllers/sessionController");
 
 const protect = require("../middleware/authMiddleware"); // Import authentication middleware
@@ -24,7 +25,7 @@ router.use(protect);
 // @desc    Start a new focus session for the logged-in user
 // @access  Private
 router.post("/start", startSession);
-
+router.patch("/:id/activate", activateSession);
 // @route   POST /api/sessions/data/:sessionId
 // @desc    Process a data point (webcam + screen image) for a specific session
 // @access  Private
