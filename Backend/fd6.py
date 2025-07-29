@@ -253,13 +253,14 @@ class FocusDetector:
         if y is not None: cv2.putText(image, f"Yaw: {y:.1f}", (w-180, text_y_offset), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,255,0),1)
         cv2.imshow('Focus Detector', image)
 
-    def run(self, output_queue: multiprocessing.Queue, stop_event: multiprocessing.Event):
+    def run(self, output_queue: multiprocessing.Queue, stop_event: multiprocessing.Event, handshake_queue: multiprocessing.Queue = None):
         if not self.initialize_resources():
             error_msg = {'source': 'focus_detector', 'type': 'error', 'timestamp': time.time(), 'message': 'Initialization failed.'}
             try: output_queue.put_nowait(error_msg)
             except Exception as e: print(f"FD Error: Could not put init error to queue: {e}", file=sys.stderr)
             return
-
+        if handshake_queue:
+            handshake_queue.put("fd_ready")
         print("FD: Run loop starting.", file=sys.stderr)
         self._distraction_history.clear()
         

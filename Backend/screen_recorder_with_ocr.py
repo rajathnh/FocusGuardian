@@ -79,7 +79,9 @@ class WindowMonitor:
             return "[OCR FAILED]"
 
     # --- THE FINAL, UPGRADED `run` METHOD ---
-    def run(self, output_queue: multiprocessing.Queue, stop_event: multiprocessing.Event):
+    def run(self, output_queue: multiprocessing.Queue, stop_event: multiprocessing.Event, handshake_queue: multiprocessing.Queue = None):
+        if handshake_queue:
+            handshake_queue.put("wm_ready")
         print(f"WM: Window Monitor process started (Interval: {self.interval_seconds}s).", file=sys.stderr)
 
         while not stop_event.is_set():
