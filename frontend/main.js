@@ -53,7 +53,7 @@ ipcMain.on('start-local-engine', (event, { sessionId, token }) => {
   
   // --- IMPORTANT: CHOOSE THE CORRECT PYTHON EXECUTABLE PATH ---
   // Option 1: For Windows venv
-  const pythonExecutable = path.join(__dirname, '..', 'Backend', 'venv', 'Scripts', 'python.exe');
+  const pythonExecutable = path.join(__dirname, '..', 'Backend', 'venv_prod', 'Scripts', 'python.exe');
   
   // Option 2: For Mac/Linux venv (uncomment if you're on Mac/Linux)
   // const pythonExecutable = path.join(__dirname, '..', 'Backend', 'venv', 'bin', 'python');

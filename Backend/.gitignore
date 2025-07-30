@@ -2,6 +2,7 @@
 # Never commit the venv folder.
 venv/
 venv1/
+venv_prod/
 focus_env/
 
 # --- Python Caches ---

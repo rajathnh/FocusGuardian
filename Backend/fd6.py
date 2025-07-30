@@ -2,6 +2,7 @@
 # Implements Tiered EAR Thresholds + Extreme Pose Override + ML Emotion Detection
 # ADAPTED for integration: uses multiprocessing.Queue and multiprocessing.Event
 import os
+os.environ['PYTHONWARNINGS'] = 'ignore:SymbolDatabase.GetPrototype() is deprecated'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import cv2
 import mediapipe as mp
@@ -17,7 +18,8 @@ import sys
 import joblib
 import warnings
 from sklearn.exceptions import InconsistentVersionWarning, ConvergenceWarning # Might as well filter these too
-
+warnings.filterwarnings("ignore", category=UserWarning, message="SymbolDatabase.GetPrototype() is deprecated.")
+warnings.filterwarnings("ignore", category=UserWarning)
 # ## NEW: Suppress specific, harmless scikit-learn warnings ##
 warnings.filterwarnings("ignore", category=UserWarning, module='sklearn.ensemble._base')
 warnings.filterwarnings("ignore", category=UserWarning, module='sklearn.utils.validation')
@@ -332,6 +334,13 @@ class FocusDetector:
             except Exception: pass
         print("FD: Cleanup done.", file=sys.stderr)
 
+def run_focus_detector_process(output_queue: 'multiprocessing.Queue', stop_event: 'multiprocessing.Event', handshake_queue: 'multiprocessing.Queue'):
+    """This function is the target for the multiprocessing.Process."""
+    try:
+        detector = FocusDetector(show_window=False)
+        detector.run(output_queue, stop_event, handshake_queue)
+    except Exception as e:
+        print(f"FD PROCESS CRASHED: {e}", file=sys.stderr)
 # --- Standalone Test ---
 if __name__ == "__main__":
     print("Running Focus Detector (ML Emotion) in standalone test mode...")

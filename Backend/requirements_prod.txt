@@ -1,0 +1,32 @@
+# requirements_prod.txt
+# Lean dependencies for running Focus Guardian (inference only)
+
+# This special line tells pip to look for CPU-only versions of torch.
+--find-links https://download.pytorch.org/whl/cpu
+
+# Now, list the packages. Pip will use the link above for these.
+torch
+torchvision
+torchaudio
+
+# Core ML/AI Libraries
+transformers>=4.0.0
+sentencepiece
+scikit-learn
+joblib
+
+# Computer Vision & Face Tracking
+opencv-python
+mediapipe
+scipy
+numpy
+
+# Screen & Window Tracking
+psutil
+pyautogui
+pytesseract
+pywinauto
+Pillow
+
+# Utilities
+requests

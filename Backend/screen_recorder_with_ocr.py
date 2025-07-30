@@ -2,6 +2,8 @@
 # MERGED: Combines robust window tracking, OCR, and URL extraction.
 
 import time, platform, sys, multiprocessing, queue
+import warnings
+warnings.filterwarnings("ignore", message="SymbolDatabase.GetPrototype() is deprecated")
 # --- MERGED IMPORTS ---
 try:
     import psutil
@@ -116,6 +118,13 @@ class WindowMonitor:
                 break
         print("WM: Window Monitor process finished.", file=sys.stderr)
 
+def run_window_monitor_process(interval_seconds: int, output_queue: 'multiprocessing.Queue', stop_event: 'multiprocessing.Event', handshake_queue: 'multiprocessing.Queue'):
+    """This function is the target for the multiprocessing.Process."""
+    try:
+        monitor = WindowMonitor(interval_seconds=interval_seconds)
+        monitor.run(output_queue, stop_event, handshake_queue)
+    except Exception as e:
+        print(f"WM PROCESS CRASHED: {e}", file=sys.stderr)
 # --- Standalone Test Block ---
 if __name__ == '__main__':
     print("Running Upgraded Screen Tracker in standalone test mode...")
